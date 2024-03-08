@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title','Add Task')
+@section('title','Edit Task')
 @section('content')
 @section('styles')
 <style>
@@ -11,12 +11,12 @@
 
 </style>
 @endsection
-
-<form action="{{route('addTasks')}}" method="post">
+<form action="{{route('editTasks',['task'=>$task->id])}}" method="post">
   @csrf
+  @method('PUT')
   <div>
     <label for="Title">Title</label>
-    <input type="text" name="title">
+    <input type="text" name="title" value="{{$task->title}}"/>
     <span>
       @error('title')
       <p class="err">{{$message}}</p>
@@ -25,7 +25,7 @@
   </div>
   <div>
     <label for="Description">Description</label>
-    <input type="text" name="description">
+    <input type="text" name="description" value="{{$task->description}}"/>
      <span>
       @error('description')
       <p class="err">{{$message}}</p>
@@ -35,7 +35,7 @@
 
   <div>
     <label for="Long Description">Long Description</label>
-    <input type="text" name="long_description">
+    <input type="text" name="long_description" value="{{$task->long_description}}"/>
      <span>
       @error('long_description')
       <p class="err">{{$message}}</p>

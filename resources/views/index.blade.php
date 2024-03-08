@@ -5,7 +5,7 @@
 @if(count($tasks))
 @foreach ($tasks as $task )
     
-<li><a href="{{route('getTask',['id'=>$task->id])}}">{{$task->title}}</div></li>
+<li><a href="{{route('getTask',['task'=>$task->id])}}">{{$task->title}}</div></li>
 @endforeach
 @else
  <div>No task</div>
