@@ -8,7 +8,7 @@ use \App\Models\Task;
 
 Route::get('/tasks', function () {
   return view('index', [
-    "tasks" => \App\Models\Task::latest()->get()
+    "tasks" => \App\Models\Task::latest()->paginate(5)
   ]);
 })->name("getTasks");
 
