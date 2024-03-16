@@ -33,6 +33,12 @@ Route::put('/tasks/{task}', function (Task $task, Request $req) {
   return redirect()->route('getTask', ['task' => $task->id])->with('success', "Task edited successfully");
 })->name("editTasks");
 
+Route::put('/tasks/{task}/toggle-complete', function (Task $task) {
+
+  $task->toggleComplete();
+  return redirect()->route('getTask', ['task' => $task->id])->with('success', "Task status updated successfully");
+})->name("toggleComplete");
+
 Route::view('/tasks/add', 'addtask');
 
 
